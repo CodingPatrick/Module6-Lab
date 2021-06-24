@@ -17,6 +17,10 @@
   border: 1px solid #20368F;
 }
 
+.form-control.red {
+  border: 2px solid red;
+}
+
 b,
 th {
   color: #20368F;
@@ -48,4 +52,8 @@ th {
 
 .bg-body {
   background-color: #EBEBEB !important
+}
+
+.err {
+  color: red;
 }
