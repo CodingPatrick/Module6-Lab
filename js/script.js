@@ -1,14 +1,17 @@
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_validation_check
+// https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
 
 function checkValidation() {
     var vName = validateName();
     var vEmail = validateEmail();
     var vTelephone = validateTelehone();
+    var vTime = validateTime();
+    var vDate = validateDate();
     var vCardName = validateCardName();
     var vCardNumber = validateCardNumber();
     var vCardExpirationDate = validateCardExpirationDate();
     var vCardCVV = validateCardCVV();
-    if (vName == true && vEmail == true && vTelephone == true && vCardName == true && vCardNumber == true && vCardExpirationDate == true && vCardCVV == true) {
+    if (vName == true && vEmail == true && vTelephone == true && vTime == true && vDate == true && vCardName == true && vCardNumber == true && vCardExpirationDate == true && vCardCVV == true) {
         alert("Your appointment has been succesfully scheduled. You will receive an email notification shortly.");
         location.reload();
     } else {
@@ -20,7 +23,7 @@ function validateName() {
     var name = document.getElementById("name").value;
     let valid = true;
     if (name.length == 0) {
-        valid = "* Please enter your name."
+        valid = "Please enter your name."
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-name").innerHTML = "";
@@ -37,7 +40,7 @@ function validateEmail() {
     var email = document.getElementById("email").value;
     let valid = true;
     if (eRegex.test(email) == false) {
-        valid = "* Invalid email address. Must be under the form: username@server.domain"
+        valid = "Invalid email address. Must be under the form: username@server.domain"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-email").innerHTML = "";
@@ -54,7 +57,7 @@ function validateTelehone() {
     var telephone = document.getElementById("telephone").value;
     let valid = true;
     if (pRegex.test(telephone) == false) {
-        valid = "* Invalid phone number. Must be under the form: XXX XXX XXXX or XXXXXXXXXX"
+        valid = "Invalid phone number. Must be under the form: XXX XXX XXXX or XXXXXXXXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-telephone").innerHTML = "";
@@ -67,18 +70,42 @@ function validateTelehone() {
 }
 
 function validateTime() {
-    
+    var timepicker = document.getElementById("timepicker").value;
+    let valid = true;
+    if (timepicker.length == 0) {
+        valid = "Please select a time for the appointment."
+    }
+    if (valid == true) {
+        document.getElementById("invalid-feedback-time").innerHTML = "";
+        document.getElementById("timepicker").className = "form-control";
+    } else {
+        document.getElementById("invalid-feedback-time").innerHTML = valid;
+        document.getElementById("timepicker").className = "form-control red";
+    }
+    return valid;
 }
 
 function validateDate() {
-
+    var dateInput = document.getElementById("dateInput").value;
+    let valid = true;
+    if (dateInput.length == 0) {
+        valid = "Please select a date for the appointment."
+    }
+    if (valid == true) {
+        document.getElementById("invalid-feedback-date").innerHTML = "";
+        document.getElementById("dateInput").className = "form-control";
+    } else {
+        document.getElementById("invalid-feedback-date").innerHTML = valid;
+        document.getElementById("dateInput").className = "form-control red";
+    }
+    return valid;
 }
 
 function validateCardName() {
     var cardname = document.getElementById("cardname").value;
     let valid = true;
     if (cardname.length == 0) {
-        valid = "* Please enter the name on the card."
+        valid = "Please enter the name on the card."
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardname").innerHTML = "";
@@ -95,7 +122,7 @@ function validateCardNumber() {
     var cardnumber = document.getElementById("cardnumber").value;
     let valid = true;
     if (cRegex.test(cardnumber) == false) {
-        valid = "* Invalid card number. Must be under the form: XXXXXXXXXXXXXXXX"
+        valid = "Invalid card number. Must be under the form: XXXXXXXXXXXXXXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardnumber").innerHTML = "";
@@ -112,7 +139,7 @@ function validateCardExpirationDate() {
     var cardexpirationdate = document.getElementById("cardexpirationdate").value;
     let valid = true;
     if (cRegex.test(cardexpirationdate) == false) {
-        valid = "* Invalid expiration date. Must be under the form: XX/XX or XXXX"
+        valid = "Invalid expiration date. Must be under the form: XX/XX or XXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardexpirationdate").innerHTML = "";
@@ -129,7 +156,7 @@ function validateCardCVV() {
     var cardcvv = document.getElementById("cardcvv").value;
     let valid = true;
     if (cRegex.test(cardcvv) == false) {
-        valid = "* Invalid CVV number. Must be under the form: XXX"
+        valid = "Invalid CVV number. Must be under the form: XXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardcvv").innerHTML = "";
@@ -141,39 +168,6 @@ function validateCardCVV() {
     return valid;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Function to verify that the phone number is correct.
-// Here, I validate for (12345), but you have to change that for a phone validation
-// Tutorials on Regular expressions
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-// https://flaviocopes.com/javascript-regular-expressions/
-// Regular expressions can get complex, you can think in terms of a series of characters
-// or numbers
-function validatePhone(txtPhone) {
-    var a = document.getElementById(txtPhone).value;
-    // This filter asks for something like (12345), so parentheses with any number (at least 1)
-    // of digits
-    var filter = /^(\([-+]?[0-9]+)\)$/;
-    if (filter.test(a)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 // Using date restrictions on datepicker
 // Document of datepicker is here: https://api.jqueryui.com/datepicker/
 // The following code shows how to set specific dates to exclude, as well as Sundays (Day 0)
@@ -182,6 +176,7 @@ var unavailableDates = ["06/29/2020", "07/07/2020", "07/10/2020"];
 const setDateFormat = "mm/dd/yy";
 
 function disableDates(date) {
+
     // Sunday is Day 0, disable all Sundays
     if (date.getDay() === 0)
         return [false];
@@ -189,23 +184,8 @@ function disableDates(date) {
     return [unavailableDates.indexOf(string) === -1]
 }
 
-
 // HERE, JQuery "LISTENING" starts
 $(document).ready(function () {
-
-    // phone validation, it calls validatePhone
-    // and also some feedback as an Alert + putting a value in the input that shows the format required
-    // the "addClass" will use the class "error" defined in style.css and add it to the phone input
-    // The "error" class in style.css defines yellow background and red foreground
-    $("#phone").on("change", function () {
-        if (!validatePhone("phone")) {
-            alert("Wrong format for phone");
-            $("#phone").val("(xxxx)");
-            $("#phone").addClass("error");
-        } else {
-            $("#phone").removeClass("error");
-        }
-    });
 
     // To change the style of the calender, look in jqueryui.com, under Themes, in the ThemeRoller Gallery
     // You can try different themes (the names are under the calendars) / This is Excite Bike
@@ -217,31 +197,42 @@ $(document).ready(function () {
     $("#dateInput").datepicker({
         dateFormat: setDateFormat,
         // no calendar before June 1rst 2020
-        minDate: new Date('06/01/2020'),
-        maxDate: '+4M',
+        minDate: '1',
+        maxDate: '+5M',
         // used to disable some dates
         beforeShowDay: $.datepicker.noWeekends,
         beforeShowDay: disableDates
     });
 
-
-    // Look at the different events on which an action can be performed
-    // https://www.w3schools.com/jquery/jquery_events.asp
-    // Here, we put
-    $("#debit").on("mouseenter", function () {
-        $("#debit").addClass("showInput");
-    });
-
-    $("#debit").on("mouseleave", function () {
-        $("#debit").removeClass("showInput");
-    });
-
     // https://jqueryui.com/tooltip/
     // The class "highlight" used here is predefined in JQuery UI
     // the message of the tooltip is encoded in the input (in the HTML file)
-    $("#debit").tooltip({
+    $("#cardnumber").tooltip({
         classes: {
             "ui-tooltip": "highlight"
         }
+    });
+    $("#cardcvv").tooltip({
+        classes: {
+            "ui-tooltip": "highlight"
+        }
+    });
+    $("#cardname").tooltip({
+        classes: {
+            "ui-tooltip": "highlight"
+        }
+    });
+
+    // https://www.codexworld.com/add-timepicker-to-input-field-jquery-plugin/
+    $("#time").timepicker({
+        timeFormat: 'h:mm p',
+        interval: 30,
+        minTime: '10:00am',
+        maxTime: '6:00pm',
+        defaultTime: '',
+        startTime: '10:00am',
+        dynamic: true,
+        dropdown: true,
+        scrollbar: true
     });
 });

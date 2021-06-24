@@ -6,9 +6,16 @@
     <title>SafetyPet Co.</title>
     <link rel="shortcut icon" type="image/png" href="pictures/logogreen.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jquery.timepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="js/jquery.timepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <!-- ICON LINKS -->
@@ -22,6 +29,8 @@
 <a href="https://icons8.com/icon/82842/form"></a>
 
 <body class="bg-info">
+
+    <!-- HEADER AND NAVIGATION BAR -->
     <header class="sticky-top">
         <nav class="navbar bg-dark text-white p-1 navbar-expand">
             <h1><img src="pictures/logo.png" width="80" height="80"> SafetyPet Co.</h1>
@@ -51,8 +60,7 @@
 
             <!-- MESSAGE FORM FOUNDER -->
             <div class="bg-body container-fluid py-4 mt-3 justify-content-center text-center">
-                <h1><img src="pictures/logogreen.png" width="80" height="80">SafetyPet Co. - Profesional Veterinary
-                    Clinic</h1>
+                <h1><img src="pictures/logogreen.png" width="80" height="80">SafetyPet Co. - Profesional Veterinary Clinic</h1>
                 <h2><br>Message from the founder:</h2>
                 <p class="lead">"Our local vetiranarian clinic provides services to help your pet
                     reach its full potential. We take pride in our work and are determined to resolve any
@@ -61,11 +69,8 @@
 
             <!-- EXPERTS -->
             <div class="bg-body container-fluid py-2 mt-3 justify-content-center">
-                <h2 class="featurette-heading" id="first"><b><img
-                            src="https://img.icons8.com/ios-glyphs/64/000000/user-group-man-woman.png" /><br><br>Meet
-                        our team</b>
-                    <br><span class="text-muted">Experts that are willing to help.</span></h2>
-                <br><br>
+                <h2 class="featurette-heading" id="first"><b><img src="https://img.icons8.com/ios-glyphs/64/000000/user-group-man-woman.png" /><br><br>Meet our team</b>
+                    <br><span class="text-muted">Experts that are willing to help.</span></h2><br><br>
                 <div class="row justify-content-center">
 
                     <!-- DOCTOR 1 -->
@@ -102,15 +107,9 @@
                 <table class="table table-info table-hover">
                     <thead>
                         <tr>
-                            <th style="width: 10%">
-                                <h2>Services</h2>
-                            </th>
-                            <th style="width: 80%">
-                                <h2>Description</h2>
-                            </th>
-                            <th style="width: 10%">
-                                <h2>Price</h2>
-                            </th>
+                            <th style="width: 10%"><h2>Services</h2></th>
+                            <th style="width: 80%"><h2>Description</h2></th>
+                            <th style="width: 10%"><h2>Price</h2></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -152,42 +151,40 @@
 
             <!-- BOOKINGS -->
             <div class="bg-body container-fluid py-2 mt-3">
-                <h2 class="featurette-heading" id="third"><b><img
-                            src="https://img.icons8.com/glyph-neue/64/000000/calendar.png" /><br><br>Book a service</b>
+                <h2 class="featurette-heading" id="third"><b><img src="https://img.icons8.com/glyph-neue/64/000000/calendar.png" /><br><br>Book a service</b>
                     <br><span class="text-muted">It is our pleasure to have you.</span></h2>
                 <!-- FORM -->
                 <div class="row featurette">
                     <div class="col-lg-7">
                         <form>
-                            <h4 class="mb-3"><img src="https://img.icons8.com/material/26/000000/form--v1.png" />
-                                General information</h4>
+                            <h4 class="mb-3"><img src="https://img.icons8.com/material/26/000000/form--v1.png"/> General information</h4>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Full name (first / last)</label>
+                                <label for="name" class="form-label">Full name (first / last) <span class="red">*</span></label>
                                 <input type="text" class="form-control" id="name" aria-describedby="Name">
                                 <div id="invalid-feedback-name" class="err"></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Email address</label>
+                                    <label class="form-label">Email address <span class="red">*</span></label>
                                     <input type="email" class="form-control" id="email">
                                     <div id="invalid-feedback-email" class="err"></div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Phone number</label>
+                                    <label class="form-label">Phone number <span class="red">*</span></label>
                                     <input type="tel" class="form-control" id="telephone">
                                     <div id="invalid-feedback-telephone" class="err"></div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">What expert would you like to see?</label>
+                                <label class="form-label">What expert would you like to see? <span class="red">*</span></label>
                                 <select class="form-select" id="expert">
-                                    <option value="1">Doctor Hillary Smith</option>
-                                    <option value="2">Doctor Kevin Plazzo</option>
-                                    <option value="3">Doctor Ainsly Williams</option>
+                                    <option value="1" id="Hillary">Doctor Hillary Smith</option>
+                                    <option value="2" id="Kevin">Doctor Kevin Plazzo</option>
+                                    <option value="3" id="Ainsly">Doctor Ainsly Williams</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">What is the service you need?</label>
+                                <label class="form-label">What is the service you need? <span class="red">*</span></label>
                                 <select class="form-select" id="service">
                                     <option value="1">Medical Care</option>
                                     <option value="2">Dentistry Services</option>
@@ -198,41 +195,40 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Select a time for your appointment.</label>
-                                    <input type="time" id="time" class="form-control">
+                                    <label class="form-label">Select a time for your appointment. <span class="red">*</span></label>
+                                    <input id="time" type="text" class="form-control"/>
                                     <div id="invalid-feedback-time" class="err"></div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Select a date for your appointment.</label>
-                                    <input class="form-control" id="date" type="date">
+                                    <label class="form-label">Select a date for your appointment. <span class="red">*</span></label>
+                                    <input class="form-control" id="dateInput">
                                     <div id="invalid-feedback-date" class="err"></div>
                                 </div>
                             </div>
                             <hr class="mb-4">
-                            <h4 class="mb-3"><img
-                                    src="https://img.icons8.com/ios-glyphs/26/000000/bank-card-back-side.png" /> Payment
-                                information</h4>
+                            <h4 class="mb-3"><img src="https://img.icons8.com/ios-glyphs/26/000000/bank-card-back-side.png" /> Payment information</h4>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Name on card</label>
-                                    <input type="text" class="form-control" id="cardname">
+                                    <label class="form-label">Name on card <span class="red">*</span></label>
+                                    <input title="We ask for your credit card information for ensurance. 20$ will be dedecuted if you do not show up." 
+                                    type="text" class="form-control" id="cardname">
                                     <div id="invalid-feedback-cardname" class="err"></div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Credit card number</label>
-                                    <input type="text" class="form-control" id="cardnumber">
+                                    <label class="form-label">Credit card number <span class="red">*</span></label>
+                                    <input title="Card number is the 16 digit number on the from of your card." type="text" class="form-control" id="cardnumber">
                                     <div id="invalid-feedback-cardnumber" class="err"></div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Expiration date</label>
+                                    <label class="form-label">Expiration date <span class="red">*</span></label>
                                     <input type="text" class="form-control" id="cardexpirationdate">
                                     <div id="invalid-feedback-cardexpirationdate" class="err"></div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">CVV</label>
-                                    <input type="text" class="form-control" id="cardcvv">
+                                    <label class="form-label">CVV <span class="red">*</span></label>
+                                    <input title="CVV is the 3 digit number on the back of your card." type="text" class="form-control" id="cardcvv">
                                     <div id="invalid-feedback-cardcvv" class="err"></div>
                                 </div>
                             </div>
@@ -240,14 +236,11 @@
                         <hr class="mb-4">
                         <div class="text-center">
                             <button onclick="checkValidation()" class="btn btn-primary">Book Appointment</button>
-                        </div>
-                        <br>
+                        </div><br>
                     </div>
 
                     <!-- PICTURE -->
-                    <div class="col-lg-4">
-                        <br><img class="img" src="pictures/picture1.jpg">
-                    </div>
+                    <div class="col-lg-4"><br><img class="img" src="pictures/picture1.jpg"></div>
                 </div>
             </div>
 
@@ -256,9 +249,7 @@
                 <div class="row featurette">
                     <!-- TEXT -->
                     <div class="col-lg-6">
-                        <h2 class="featurette-heading" id="fourth"><b><img
-                                    src="https://img.icons8.com/glyph-neue/64/000000/contact-card.png" /><br><br>Contact
-                                Us</b>
+                        <h2 class="featurette-heading" id="fourth"><b><img src="https://img.icons8.com/glyph-neue/64/000000/contact-card.png" /><br><br>Contact Us</b>
                             <br><span class="text-muted">We are happy to help.</span></h2>
                         <p class="lead"><br><b><img src="https://img.icons8.com/android/24/000000/phone.png" /> &nbsp;
                                 Phone:</b> +1 (613) 222 3739
@@ -268,10 +259,8 @@
                                 &nbsp; Location:</b> 111 Shuttleworth Dr. Unit 6, Ottawa, ON</p>
                     </div>
                     <!-- MAP -->
-                    <div class="col-lg-4">
-                        <br>
-                        <iframe width="500" height="500"
-                            src="https://maps.google.com/maps?q=111%20Shuttleworth%20Dr.%20Unit%206,%20Ottawa,%20ON%20K1T%200W7&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+                    <div class="col-lg-4"><br>
+                        <iframe width="500" height="500" src="https://maps.google.com/maps?q=111%20Shuttleworth%20Dr.%20Unit%206,%20Ottawa,%20ON%20K1T%200W7&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                         <br>
                     </div>
                 </div>
@@ -281,9 +270,7 @@
 </body>
 
 <footer class="py-4 mt-5 bg-dark text-white">
-    <div class="container">
-        <p>Website designed by: Arsène Lupin ⚡</p>
-    </div>
+    <div class="container"><p>Website designed by: Arsène Lupin ⚡</p></div>
 </footer>
 
 </html>
