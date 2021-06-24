@@ -74,7 +74,7 @@ function validateTelehone() {
     var telephone = document.getElementById("telephone").value;
     let valid = true;
     if (pRegex.test(telephone) == false) {
-        valid = "Invalid phone number. Must be under the form: XXX XXX XXXX or XXXXXXXXXX"
+        valid = "Invalid phone number. Must be under the format: XXXXXXXXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-telephone").innerHTML = "";
@@ -142,7 +142,7 @@ function validateCardNumber() {
     var cardnumber = document.getElementById("cardnumber").value;
     let valid = true;
     if (cRegex.test(cardnumber) == false) {
-        valid = "Invalid card number. Must be under the form: XXXXXXXXXXXXXXXX"
+        valid = "Invalid card number. Must be under the format: XXXXXXXXXXXXXXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardnumber").innerHTML = "";
@@ -159,7 +159,7 @@ function validateCardExpirationDate() {
     var cardexpirationdate = document.getElementById("cardexpirationdate").value;
     let valid = true;
     if (cRegex.test(cardexpirationdate) == false) {
-        valid = "Invalid expiration date. Must be under the form: XX/XX or XXXX"
+        valid = "Invalid expiration date. Must be under the format: XX/XX or XXXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardexpirationdate").innerHTML = "";
@@ -176,7 +176,7 @@ function validateCardCVV() {
     var cardcvv = document.getElementById("cardcvv").value;
     let valid = true;
     if (cRegex.test(cardcvv) == false) {
-        valid = "Invalid CVV number. Must be under the form: XXX"
+        valid = "Invalid CVV number. Must be under the format: XXX"
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-cardcvv").innerHTML = "";
