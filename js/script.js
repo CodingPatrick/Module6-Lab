@@ -204,15 +204,15 @@ function disableDates(date) {
     if (date.getDay() === 6)
         return [false];
     // Hillary does not work Fridays
-    if (expert == 1)
+    if (expert == "Doctor Hillary Smith")
         if (date.getDay() === 5)
             return [false];
     // Kevin does not work Wednesdays
-    if (expert == 2)
+    if (expert == "Doctor Kevin Plazzo")
         if (date.getDay() === 3)
             return [false];
     // Ainsly does not work Tuesdays
-    if (expert == 3)
+    if (expert == "Doctor Ainsly Williams")
         if (date.getDay() === 2)
             return [false];
     var string = jQuery.datepicker.formatDate(setDateFormat, date);
