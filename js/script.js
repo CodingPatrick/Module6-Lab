@@ -2,7 +2,16 @@
 // https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
 // https://www.codexworld.com/add-timepicker-to-input-field-jquery-plugin/
 
+let fName = "";
+let fEmail = "";
+let fTelephone = "";
+let fExpert = "";
+let fService = "";
+let fTime = "";
+let fDate = "";
+
 function checkValidation() {
+    getExpertService();
     var vName = validateName();
     var vEmail = validateEmail();
     var vTelephone = validateTelehone();
@@ -13,11 +22,16 @@ function checkValidation() {
     var vCardExpirationDate = validateCardExpirationDate();
     var vCardCVV = validateCardCVV();
     if (vName == true && vEmail == true && vTelephone == true && vTime == true && vDate == true && vCardName == true && vCardNumber == true && vCardExpirationDate == true && vCardCVV == true) {
-        alert("Your appointment has been succesfully scheduled. You will receive an email notification shortly.");
+        alert("Your appointment has been succesfully scheduled.\n\n Name: "+fName+"\n Email: "+fEmail+"\n Telephone: "+fTelephone+"\n Expert: "+fExpert+"\n Service: "+fService+"\n Time: "+fTime+"\n Date: "+fDate);
         location.reload();
     } else {
         alert("Oops. Looks like the form was not filled in properly. Please check again.");
     }
+}
+
+function getExpertService() {
+    fService = document.getElementById("service").value;
+    fExpert = document.getElementById("expert").value;
 }
 
 function validateName() {
@@ -29,6 +43,7 @@ function validateName() {
     if (valid == true) {
         document.getElementById("invalid-feedback-name").innerHTML = "";
         document.getElementById("name").className = "form-control";
+        fName = name;
     } else {
         document.getElementById("invalid-feedback-name").innerHTML = valid;
         document.getElementById("name").className = "form-control red";
@@ -46,6 +61,7 @@ function validateEmail() {
     if (valid == true) {
         document.getElementById("invalid-feedback-email").innerHTML = "";
         document.getElementById("email").className = "form-control";
+        fEmail = email;
     } else {
         document.getElementById("invalid-feedback-email").innerHTML = valid;
         document.getElementById("email").className = "form-control red";
@@ -63,6 +79,7 @@ function validateTelehone() {
     if (valid == true) {
         document.getElementById("invalid-feedback-telephone").innerHTML = "";
         document.getElementById("telephone").className = "form-control";
+        fTelephone = telephone;
     } else {
         document.getElementById("invalid-feedback-telephone").innerHTML = valid;
         document.getElementById("telephone").className = "form-control red";
@@ -79,6 +96,7 @@ function validateTime() {
     if (valid == true) {
         document.getElementById("invalid-feedback-time").innerHTML = "";
         document.getElementById("time").className = "form-control";
+        fTime = document.getElementById("time").value;
     } else {
         document.getElementById("invalid-feedback-time").innerHTML = valid;
         document.getElementById("time").className = "form-control red";
@@ -95,6 +113,7 @@ function validateDate() {
     if (valid == true) {
         document.getElementById("invalid-feedback-date").innerHTML = "";
         document.getElementById("dateInput").className = "form-control";
+        fDate = document.getElementById("dateInput").value;
     } else {
         document.getElementById("invalid-feedback-date").innerHTML = valid;
         document.getElementById("dateInput").className = "form-control red";
