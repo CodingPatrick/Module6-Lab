@@ -1,5 +1,6 @@
 // https://www.w3schools.com/js/tryit.asp?filename=tryjs_validation_check
 // https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
+// https://www.codexworld.com/add-timepicker-to-input-field-jquery-plugin/
 
 function checkValidation() {
     var vName = validateName();
@@ -70,17 +71,17 @@ function validateTelehone() {
 }
 
 function validateTime() {
-    var timepicker = document.getElementById("timepicker").value;
+    var time = document.getElementById("time").value;
     let valid = true;
-    if (timepicker.length == 0) {
+    if (time.length == 0) {
         valid = "Please select a time for the appointment."
     }
     if (valid == true) {
         document.getElementById("invalid-feedback-time").innerHTML = "";
-        document.getElementById("timepicker").className = "form-control";
+        document.getElementById("time").className = "form-control";
     } else {
         document.getElementById("invalid-feedback-time").innerHTML = valid;
-        document.getElementById("timepicker").className = "form-control red";
+        document.getElementById("time").className = "form-control red";
     }
     return valid;
 }
@@ -176,22 +177,35 @@ var unavailableDates = ["06/29/2020", "07/07/2020", "07/10/2020"];
 const setDateFormat = "mm/dd/yy";
 
 function disableDates(date) {
-
+    var expert = document.getElementById("expert").value;
     // Sunday is Day 0, disable all Sundays
     if (date.getDay() === 0)
         return [false];
+    // Saturday is Day 6, disable all Saturdays
+    if (date.getDay() === 6)
+        return [false];
+    // Hillary does not work Fridays
+    if (expert == 1)
+        if (date.getDay() === 5)
+            return [false];
+    // Kevin does not work Wednesdays
+    if (expert == 2)
+        if (date.getDay() === 3)
+            return [false];
+    // Ainsly does not work Tuesdays
+    if (expert == 3)
+        if (date.getDay() === 2)
+            return [false];
     var string = jQuery.datepicker.formatDate(setDateFormat, date);
     return [unavailableDates.indexOf(string) === -1]
 }
 
 // HERE, JQuery "LISTENING" starts
 $(document).ready(function () {
-
     // To change the style of the calender, look in jqueryui.com, under Themes, in the ThemeRoller Gallery
     // You can try different themes (the names are under the calendars) / This is Excite Bike
     // To use a different theme you must include its css in your HTML file.
     // The one I included in my HTML is the Excite Bike, but you can try others
-
     // Also, here is a good tutorial for playing with the datepicker in https://webkul.com/blog/jquery-datepicker/
     // Datepicker is also documented as one of the widgets here: https://api.jqueryui.com/category/widgets/
     $("#dateInput").datepicker({
@@ -223,7 +237,6 @@ $(document).ready(function () {
         }
     });
 
-    // https://www.codexworld.com/add-timepicker-to-input-field-jquery-plugin/
     $("#time").timepicker({
         timeFormat: 'h:mm p',
         interval: 30,

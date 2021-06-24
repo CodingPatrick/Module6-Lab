@@ -23,6 +23,7 @@
 
 .form-control.red {
   border: 2px solid red;
+  color: #000;
 }
 
 .form-control:hover { 
